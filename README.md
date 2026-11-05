@@ -10,7 +10,9 @@ A Flutter mobile application for an online bookstore featuring a complete shoppi
     <td align="center"><b>Welcome Screen</b></td>
   </tr>
   <tr>
-    <td><img src="github.com/user-attachments/assets/49af4d0e-1e2c-4362-b6bc-f0a9d6a74707" width="180"></td>
+    <img width="441" height="985" alt="splah screen" src="https://github.com/user-attachments/assets/8d5c728c-d08c-48e8-b14d-ffbda2644683" />
+
+    <td><img src="https://github.com/user-attachments/assets/8d5c728c-d08c-48e8-b14d-ffbda2644683" width="180"></td>
     <td><img src="https://github.com/user-attachments/assets/80e086a0-c68b-4ab5-b7f9-53ddb892e6c6" width="180"></td>
   </tr>
 </table>
