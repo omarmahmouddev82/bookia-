@@ -13,6 +13,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 20.h),

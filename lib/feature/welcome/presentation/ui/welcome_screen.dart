@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const new({super.key});
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

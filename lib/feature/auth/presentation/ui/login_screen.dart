@@ -9,6 +9,7 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
     );
   }
