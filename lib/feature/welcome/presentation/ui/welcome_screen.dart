@@ -31,6 +31,8 @@ class WelcomeScreen extends StatelessWidget {
             Text(
               "Order Your Book Now!",
               style: AppTextStyle.dmRegular18,
+              textAlign: TextAlign.left,
+              textDirection: TextDirection.ltr,
             ),
             const Spacer(),
 
