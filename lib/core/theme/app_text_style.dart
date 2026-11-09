@@ -14,4 +14,9 @@ class AppTextStyle {
     fontSize: 18,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle dmRegular14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColor.darkGrayColor,
+  );
 }

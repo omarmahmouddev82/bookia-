@@ -20,8 +20,7 @@ class _CustomTextFormFelidState extends State<CustomTextFormFelid> {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
-      textDirection: TextDirection.ltr,
-      textAlign: TextAlign.left,
+      textDirection: TextDirection.rtl,
       obscureText: widget.isPassword && isObsecure,
       decoration: InputDecoration(
         fillColor: Colors.white,
@@ -46,7 +45,7 @@ class _CustomTextFormFelidState extends State<CustomTextFormFelid> {
             color: AppColor.mainColor,
           )
         ),
-        prefixIcon: widget.isPassword? InkWell(
+        suffixIcon: widget.isPassword? InkWell(
           onTap: () {
             setState(() {
               isObsecure =! isObsecure;

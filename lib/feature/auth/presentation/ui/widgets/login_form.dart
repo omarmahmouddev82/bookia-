@@ -1,4 +1,5 @@
 import 'package:bookia/core/routes/app_routes.dart';
+import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/core/utils/app_validator.dart';
 import 'package:bookia/core/widgets/app_button.dart';
 import 'package:bookia/core/widgets/custom_text_form_felid.dart';
@@ -76,6 +77,15 @@ class _LoginFormState extends State<LoginForm> {
                   return "Password must be greater than 6 char";
                 }
               },
+            ),
+            12.verticalSpace,
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "Forgot Password?",
+                style: AppTextStyle.dmRegular14,
+                textDirection: TextDirection.ltr,
+              ),
             ),
             32.verticalSpace,
             AppButton(
