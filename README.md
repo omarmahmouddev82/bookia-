@@ -1,5 +1,4 @@
-<img width="444" height="977" alt="login screen" src="https://github.com/user-attachments/assets/96fb3df0-384f-4190-8ab6-34c01e5f059e" />
-<img width="444" height="977" alt="login screen" src="https://github.com/user-attachments/assets/95852885-e8b6-430c-a310-c9704deca07a" />
+
 # Bookia App 📚
 
 A Flutter mobile application for an online bookstore featuring a complete shopping experience, clean architecture, responsive layouts, and highly reusable components.
