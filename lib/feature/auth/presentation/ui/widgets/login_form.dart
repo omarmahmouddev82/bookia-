@@ -26,27 +26,36 @@ class _LoginFormState extends State<LoginForm> {
     passwordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is LoginLoadingState){
-          showDialog(context: context,barrierDismissible: false, builder: (context)=> 
-          AlertDialog(
-            backgroundColor: Colors.transparent,
-            content: Center(child: CircularProgressIndicator()),
-          ));
-        }else if (state is LoginSuccesState){
-          Navigator.pushNamed(context, AppRoutes.homeScreen);
-        }
-        else{
-          Navigator.pop(context);
-          showDialog(context: context, builder: (context)=> AlertDialog(
-            content: Text(
-              "Error",
-              textAlign: TextAlign.center,
+        if (state is LoginLoadingState) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => const AlertDialog(
+              backgroundColor: Colors.transparent,
+              content: Center(child: CircularProgressIndicator()),
             ),
-          ));
+          );
+        } else if (state is LoginSuccesState) {
+          Navigator.pop(context);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.homeScreen,
+            (route) => false,
+          );
+        } 
+        else {
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (context) => const AlertDialog(
+              content: Text("Error", textAlign: TextAlign.center),
+            ),
+          );
         }
       },
       child: Form(
@@ -60,9 +69,10 @@ class _LoginFormState extends State<LoginForm> {
                 if (value == null || value.isEmpty) {
                   return "Email is required";
                 }
-                if (!AppValidator.isEmailValid(value ?? "")) {
-                  return "please Enter Valid Email";
+                if (!AppValidator.isEmailValid(value)) {
+                  return "Please enter a valid email";
                 }
+                return null;
               },
             ),
             16.verticalSpace,
@@ -73,9 +83,11 @@ class _LoginFormState extends State<LoginForm> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Password is required";
-                } else if (value.length <= 6) {
-                  return "Password must be greater than 6 char";
+                } 
+                else if (value.length <= 6) {
+                  return "Password must be greater than 6 chars";
                 }
+                return null;
               },
             ),
             12.verticalSpace,
@@ -91,8 +103,11 @@ class _LoginFormState extends State<LoginForm> {
             AppButton(
               title: "Login",
               onTap: () {
-                if (formState.currentState?.validate()?? false){
-                  context.read<AuthCubit>().login(email: emailController.text, password: passwordController.text);
+                if (formState.currentState?.validate() ?? false) {
+                  context.read<AuthCubit>().login(
+                    email: emailController.text.trim(),
+                    password: passwordController.text,
+                  );
                 }
               },
             ),

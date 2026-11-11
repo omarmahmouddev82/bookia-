@@ -16,8 +16,10 @@ class WelcomeScreen extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: Image.asset("assets/images/bg_welcome.png").image
-          )
+            image: Image.asset(
+              "assets/images/bg_welcome.png",
+            ).image,
+          ),
         ),
         child: Column(
           children: [
@@ -28,6 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               height: 80.h,
             ),
             12.verticalSpace,
+
             Text(
               "Order Your Book Now!",
               style: AppTextStyle.dmRegular18,
@@ -39,12 +42,21 @@ class WelcomeScreen extends StatelessWidget {
             AppButton(
               title: "Login",
               onTap: () {
-                Navigator.pushNamed(context, AppRoutes.loginScreen);
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.loginScreen,
+                );
               },
             ),
             16.verticalSpace,
             AppButton(
               title: "Register",
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.registerScreen,
+                );
+              },
               bgColor: Colors.white,
               textColor: Colors.black,
             ),

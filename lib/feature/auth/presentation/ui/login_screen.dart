@@ -33,7 +33,9 @@ class LoginScreen extends StatelessWidget {
                       border: Border.all(color: AppColor.outlineGray),
                     ),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(Icons.arrow_back_ios_new),
                       iconSize: 18.sp,
                       color: AppColor.black,
@@ -50,16 +52,15 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   32.verticalSpace,
-                  LoginForm(),
+                  const LoginForm(),
                   32.verticalSpace,
-                  // Divider(),
                   const AuthDivider(),
                   24.verticalSpace,
                   SocialAuthButton(
                     text: 'Sign Up with Google',
                     backgroundColor: AppColor.white,
                     foregroundColor: AppColor.darkGrayColor,
-                    side: BorderSide(color: AppColor.outlineGray),
+                    side: const BorderSide(color: AppColor.outlineGray),
                     onPressed: () {},
                     imagePath: 'assets/images/google.png',
                   ),
@@ -68,11 +69,11 @@ class LoginScreen extends StatelessWidget {
                     text: 'Sign Up with Apple',
                     backgroundColor: AppColor.white,
                     foregroundColor: AppColor.darkGrayColor,
-                    side: BorderSide(color: AppColor.outlineGray),
+                    side: const BorderSide(color: AppColor.outlineGray),
                     onPressed: () {},
                     imagePath: 'assets/images/apple.png',
                   ),
-                  50.verticalSpace,
+                  40.verticalSpace,
                   AuthFooter(
                     message: 'Don’t have an account?',
                     actionText: 'Register Now',
@@ -80,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegisterScreen(),
+                          builder: (context) => const RegisterScreen(),
                         ),
                       );
                     },

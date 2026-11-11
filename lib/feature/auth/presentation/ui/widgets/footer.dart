@@ -20,19 +20,22 @@ class AuthFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text(
+          message,
+          style: AppTextStyle.dmRegular14.copyWith(color: AppColor.black),
+          textDirection: TextDirection.ltr,
+        ),
+        6.horizontalSpace,
         GestureDetector(
           onTap: onTap,
           child: Text(
-            message,
-            style: AppTextStyle.dmRegular14.copyWith(color: AppColor.black),
-            textDirection: TextDirection.ltr,
+            actionText,
+            style: AppTextStyle.dmRegular14.copyWith(
+              color: AppColor.mainColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        Text(
-          actionText,
-          style: AppTextStyle.dmRegular14.copyWith(color: AppColor.mainColor),
-        ),
-        SizedBox(width: 6.w),
       ],
     );
   }

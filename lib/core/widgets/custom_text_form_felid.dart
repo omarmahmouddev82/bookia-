@@ -21,6 +21,7 @@ class _CustomTextFormFelidState extends State<CustomTextFormFelid> {
       controller: widget.controller,
       validator: widget.validator,
       textDirection: TextDirection.rtl,
+      textAlign: TextAlign.left,
       obscureText: widget.isPassword && isObsecure,
       decoration: InputDecoration(
         fillColor: Colors.white,

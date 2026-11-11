@@ -8,38 +8,20 @@ class AuthDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity, // بيجبر الـ Container ياخد عرض الشاشة بالكامل
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // الخط اللي على الشمال
-          Expanded(
-            child: Divider(
-              color: AppColor.outlineGray,
-              thickness: 1.5,
-              endIndent: 16.w, // مسافة بين الخط وكلمة Or
-            ),
-          ),
-          
-          // كلمة Or في النص
-          Text(
+    return Row(
+      children: [
+        Expanded(child: Divider(color: AppColor.outlineGray, thickness: 2)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          child: Text(
             'Or',
             style: AppTextStyle.dmRegular14.copyWith(
               color: AppColor.darkGrayColor,
             ),
           ),
-          
-          // الخط اللي على اليمين
-          Expanded(
-            child: Divider(
-              color: AppColor.outlineGray,
-              thickness: 1.5,
-              indent: 16.w, // مسافة بين كلمة Or والخط اليمين
-            ),
-          ),
-        ],
-      ),
+        ),
+        Expanded(child: Divider(color: AppColor.outlineGray, thickness: 2)),
+      ],
     );
   }
 }
