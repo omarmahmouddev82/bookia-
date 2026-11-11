@@ -10,11 +10,14 @@ A Flutter mobile application for an online bookstore featuring a complete shoppi
     <td align="center"><b>Splash Screen</b></td>
     <td align="center"><b>Welcome Screen</b></td>
     <td align="center"><b>Login Screen</b></td>
+    <td align="center"><b>Register Screen</b></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/8d5c728c-d08c-48e8-b14d-ffbda2644683" width="180"></td>
     <td><img src="https://github.com/user-attachments/assets/80e086a0-c68b-4ab5-b7f9-53ddb892e6c6" width="180"></td>
     <td><img src="https://github.com/user-attachments/assets/a2c6b109-4a74-4f3a-9813-cc918317ca1e" width="180"></td>
+    <td><img src="https://github.com/user-attachments/assets/971cb262-c9d9-4d70-87c6-bcf525c1b383" width="180"></td>
+
 
   </tr>
 </table>
