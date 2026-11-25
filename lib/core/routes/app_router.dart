@@ -1,8 +1,8 @@
-
 import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/ui/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/ui/register_screen.dart';
+import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/ui/home_screen.dart';
 import 'package:bookia/feature/welcome/presentation/ui/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,28 +22,23 @@ class AppRouter {
         );
 
       case AppRoutes.registerScreen:
-        return MaterialPageRoute(
-          builder: (_) => const RegisterScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const RegisterScreen());
 
       case AppRoutes.welcomeScreen:
-        return MaterialPageRoute(
-          builder: (_) => const WelcomeScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
 
       case AppRoutes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit()..getBestSellerBooks(),
+            child: const HomeScreen(),
+          ),
         );
 
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-              child: Text(
-                'No route defined for ${settings.name}',
-              ),
-            ),
+            body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );
     }
