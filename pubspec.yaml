@@ -41,17 +41,15 @@ dependencies:
   dio: ^5.11.1
   shared_preferences: ^2.5.6
   skeletonizer: ^3.0.0
-
+  flutter_gen: ^5.15.0
+  flutter_svg: ^2.5.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_gen_runner: ^5.15.0
+  build_runner: ^2.15.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +66,7 @@ flutter:
   assets:
     - assets/translations/
     - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -83,8 +82,8 @@ flutter:
   fonts:
     - family: DM
       fonts:
-        - asset: assets\fonts\DMSerifDisplay-Italic.ttf
-        - asset: assets\fonts\DMSerifDisplay-Regular.ttf
+        - asset: assets/fonts/DMSerifDisplay-Italic.ttf
+        - asset: assets/fonts/DMSerifDisplay-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
@@ -93,3 +92,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_gen:
+  output: lib/gen/
+  integrations:
+    flutter_svg: true

@@ -1,6 +1,7 @@
 import 'package:bookia/feature/home/data/models/books_model.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/ui/widgets/book_item.dart';
+import 'package:bookia/feature/home/presentation/ui/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,11 +17,12 @@ class HomeScreen extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                HomeAppBar(),
                 24.verticalSpace,
                 BlocBuilder<HomeCubit, HomeState>(
                   builder: (context, state) {

@@ -1,3 +1,4 @@
+import 'package:bookia/core/networking/api_endpoints.dart';
 import 'package:bookia/core/networking/doi_factory.dart';
 import 'package:bookia/core/services/locale/locale_helper.dart';
 import 'package:bookia/core/utils/app_constants.dart';
@@ -8,7 +9,7 @@ class AuthRepo {
   static Future<bool> login({required String email, required String Password}) async {
     try {
       final response = await DoiFactory.dio?.post(
-        "login",
+        ApiEndpoints.login,
         data: {"email": email, "password": Password},
       );
       if (response?.statusCode == 200) {
@@ -31,7 +32,7 @@ class AuthRepo {
   }) async {
     try {
       final response = await DoiFactory.dio?.post(
-        "register",
+        ApiEndpoints.register,
         data: {
           "name": username,
           "email": email,

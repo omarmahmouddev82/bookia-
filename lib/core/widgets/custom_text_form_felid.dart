@@ -7,7 +7,9 @@ class CustomTextFormFelid extends StatefulWidget {
   final bool isPassword; 
   final String? Function(String?)? validator;
   final TextEditingController? controller;
-  const CustomTextFormFelid({super.key, required this.hintText, this.isPassword = false, this.validator, this.controller});
+  final bool? autofocus;
+  final void Function (String?)? onChanged;
+  const CustomTextFormFelid({super.key, required this.hintText, this.isPassword = false, this.validator, this.controller, this.autofocus, this.onChanged});
 
   @override
   State<CustomTextFormFelid> createState() => _CustomTextFormFelidState();
@@ -18,6 +20,8 @@ class _CustomTextFormFelidState extends State<CustomTextFormFelid> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
+      autofocus: widget.autofocus??false,
       controller: widget.controller,
       validator: widget.validator,
       textDirection: TextDirection.rtl,

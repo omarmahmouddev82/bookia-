@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:bookia/feature/auth/data/repo/auth_repo.dart';
 import 'package:meta/meta.dart';
