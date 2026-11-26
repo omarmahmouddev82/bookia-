@@ -5,4 +5,5 @@ class AppRoutes {
   static const String welcomeScreen= "welcome_screen";
   static const String searchScreen= "search_screen";
   static const String bookDetailsScreen= "book_details_screen";
+  static const String bottomNavbarScreen= "bottom_nav_bar_screen";
 }

@@ -11,4 +11,5 @@ class AppColor {
   static const Color white = Color(0xffFFFFFF);
   static const Color outlineGray = Color(0xffE8ECF4);
   static const Color black = Color(0xff2F2F2F);
+  static const Color backGround = Color(0xFFF7F8F9);
 }

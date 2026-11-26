@@ -4,8 +4,8 @@ import 'package:bookia/feature/auth/presentation/ui/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/ui/register_screen.dart';
 import 'package:bookia/feature/book_details/presentation/cubit/book_details_cubit.dart';
 import 'package:bookia/feature/book_details/presentation/ui/book_details_screen.dart';
+import 'package:bookia/feature/bottom_nav_bar/presentation/ui/bottom_nav_bar_screen.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
-import 'package:bookia/feature/home/presentation/ui/home_screen.dart';
 import 'package:bookia/feature/home/presentation/ui/search_screen.dart';
 import 'package:bookia/feature/welcome/presentation/ui/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AppRouter {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.welcomeScreen:
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+
       case AppRoutes.loginScreen:
         return MaterialPageRoute(
           builder: (_) {
@@ -26,17 +29,10 @@ class AppRouter {
 
       case AppRoutes.registerScreen:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      
+      case AppRoutes.bottomNavbarScreen:
+        return MaterialPageRoute(builder: (_) => const BottomNavBarScreen());
 
-      case AppRoutes.welcomeScreen:
-        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
-
-      case AppRoutes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => HomeCubit()..getBestSellerBooks(),
-            child: const HomeScreen(),
-          ),
-        );
       case AppRoutes.searchScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(

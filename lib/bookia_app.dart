@@ -32,7 +32,7 @@ class BookiaApp extends StatelessWidget {
   }
   String initPage(){
     if (LocaleHelper.prefs?.getString(AppConstants.userToken)!=null){
-      return AppRoutes.homeScreen;
+      return AppRoutes.bottomNavbarScreen;
     }
     else{
       return AppRoutes.welcomeScreen;
