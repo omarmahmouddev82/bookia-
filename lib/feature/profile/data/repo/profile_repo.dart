@@ -1,6 +1,6 @@
 import 'package:bookia/core/networking/api_endpoints.dart';
 import 'package:bookia/core/networking/doi_factory.dart';
-import 'package:bookia/feature/profile/data/profile_response.dart';
+import 'package:bookia/feature/profile/data/models/profile_response_model.dart';
 import 'package:flutter/material.dart';
 
 class ProfileRepo {

@@ -1,10 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:bookia/feature/profile/data/profile_response.dart';
-import 'package:bookia/feature/profile/repo/profile_repo.dart';
-
-
+import 'package:bookia/feature/profile/data/models/profile_response_model.dart';
+import 'package:bookia/feature/profile/data/repo/profile_repo.dart';
 import 'package:flutter/foundation.dart';
-
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
@@ -12,7 +9,6 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> getProfileData() async {
     emit(GetProfileLoading());
-
     try {
       final response = await ProfileRepo.getProfileData();
 
@@ -20,10 +16,12 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       if (response != null) {
         emit(GetProfileSucsess(response));
-      } else {
+      } 
+      else {
         emit(GetProfileError());
       }
-    } catch (e, stackTrace) {
+    } 
+    catch (e, stackTrace) {
       debugPrint('PROFILE CUBIT ERROR: $e');
       debugPrintStack(stackTrace: stackTrace);
 
