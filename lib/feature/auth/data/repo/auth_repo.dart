@@ -1,5 +1,5 @@
 import 'package:bookia/core/networking/api_endpoints.dart';
-import 'package:bookia/core/networking/doi_factory.dart';
+import 'package:bookia/core/networking/dio_factory.dart';
 import 'package:bookia/core/services/locale/locale_helper.dart';
 import 'package:bookia/core/utils/app_constants.dart';
 import 'package:dio/dio.dart';
@@ -8,13 +8,16 @@ class AuthRepo {
 
   static Future<bool> login({required String email, required String Password}) async {
     try {
-      final response = await DoiFactory.dio?.post(
+      final response = await DioFactory.dio?.post(
         ApiEndpoints.login,
         data: {"email": email, "password": Password},
       );
       if (response?.statusCode == 200) {
-        String? token = response?.data["data"]["token"];
-        saveToken(token ?? "");
+        String? token = response?.data["data"]?["token"]?.toString();
+        if (token == null || token.trim().isEmpty) {
+          return false;
+        }
+        await saveToken(token);
         return true;
       } else {
         return false;
@@ -31,7 +34,7 @@ class AuthRepo {
     required String confirmPassword,
   }) async {
     try {
-      final response = await DoiFactory.dio?.post(
+      final response = await DioFactory.dio?.post(
         ApiEndpoints.register,
         data: {
           "name": username,
@@ -41,8 +44,11 @@ class AuthRepo {
         },
       );
       if (response?.statusCode == 200 || response?.statusCode == 201) {
-        String? token = response?.data["data"]["token"];
-        await saveToken(token ?? "");
+        String? token = response?.data["data"]?["token"]?.toString();
+        if (token == null || token.trim().isEmpty) {
+          return "Register Failed, Please try again";
+        }
+        await saveToken(token);
         return null;
       } 
       else {
@@ -69,7 +75,8 @@ class AuthRepo {
     }
   }
 
-  static saveToken(String? token) async {
-    await LocaleHelper.prefs?.setString(AppConstants.userToken, token ?? "");
+  static Future<void> saveToken(String? token) async {
+    if (token == null || token.trim().isEmpty) return;
+    await LocaleHelper.prefs?.setString(AppConstants.userToken, token);
   }
 }

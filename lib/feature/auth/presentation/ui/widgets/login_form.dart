@@ -1,4 +1,3 @@
-import 'package:bookia/core/networking/doi_factory.dart';
 import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/core/utils/app_validator.dart';
@@ -43,7 +42,6 @@ class _LoginFormState extends State<LoginForm> {
           );
         } 
         else if (state is LoginSuccesState) {
-          DoiFactory.init();
           Navigator.pop(context);
           Navigator.pushNamedAndRemoveUntil(
             context,

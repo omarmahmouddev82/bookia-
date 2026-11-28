@@ -35,9 +35,16 @@ class ProfileAppBar extends StatelessWidget {
                             title: "Confirm",
                             bgColor: Colors.transparent,
                             textColor: AppColor.black,
-                            onTap: () {
-                              LocaleHelper.prefs?.remove(AppConstants.userToken);
-                              Navigator.pushNamedAndRemoveUntil(context, AppRoutes.loginScreen, (e)=>false);
+                            onTap: () async {
+                              await LocaleHelper.prefs?.remove(
+                                AppConstants.userToken,
+                              );
+                              if (!context.mounted) return;
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                AppRoutes.loginScreen,
+                                (e) => false,
+                              );
                             },
                           )
                         ),

@@ -5,18 +5,30 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-class DoiFactory {
+class DioFactory {
   static Dio? dio;
-  static init() {
+  static void init() {
     dio = Dio(
       BaseOptions(
         baseUrl: ApiEndpoints.baseUrl,
         headers: {
-          "Accept" : "application/json",
-          "Content-Type" : "application/json",
-          "Authorization": "Bearer ${LocaleHelper.prefs?.get(AppConstants.userToken)}"
-        }
-      )
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+      ),
+    );
+    dio?.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final token = LocaleHelper.prefs?.getString(AppConstants.userToken);
+          if (token != null && token.trim().isNotEmpty) {
+            options.headers["Authorization"] = "Bearer $token";
+          } else {
+            options.headers.remove("Authorization");
+          }
+          handler.next(options);
+        },
+      ),
     );
     dio?.interceptors.add(PrettyDioLogger(
         requestHeader: true,

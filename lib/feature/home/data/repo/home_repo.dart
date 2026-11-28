@@ -1,5 +1,5 @@
 import 'package:bookia/core/networking/api_endpoints.dart';
-import 'package:bookia/core/networking/doi_factory.dart';
+import 'package:bookia/core/networking/dio_factory.dart';
 import 'package:bookia/feature/home/data/models/books_model.dart';
 import 'package:dio/dio.dart';
 
@@ -7,7 +7,7 @@ class HomeRepo {
   // book model
   static Future<BooksModel?> getBestSellerBooks() async{
     try{
-      final response = await DoiFactory.dio?.get (ApiEndpoints.bestSeller);
+      final response = await DioFactory.dio?.get (ApiEndpoints.bestSeller);
       if (response?.statusCode == 200){
         BooksModel books = BooksModel.fromJson(response?.data);
         return books;
@@ -24,7 +24,7 @@ class HomeRepo {
   // search
   static Future<List<Products?>?> search (String text) async{
     try{
-      final Response = await DoiFactory.dio?.get(
+      final Response = await DioFactory.dio?.get(
         ApiEndpoints.search,
         queryParameters: {
           "name": text
@@ -46,7 +46,7 @@ class HomeRepo {
   // cart product 
   static Future<bool> addToCart (int productId) async{
     try{
-      final Response = await DoiFactory.dio?.post(
+      final Response = await DioFactory.dio?.post(
         ApiEndpoints.addToCart,
         data: {
           "product_id" : productId

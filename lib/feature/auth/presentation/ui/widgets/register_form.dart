@@ -47,7 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
           Navigator.pop(context);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            AppRoutes.homeScreen,
+            AppRoutes.bottomNavbarScreen,
             (route) => false,
           );
         } else if (state is RegisterErrorState) {
