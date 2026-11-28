@@ -1,8 +1,9 @@
 import 'package:bookia/core/routes/app_routes.dart';
 import 'package:bookia/core/theme/app_color.dart';
 import 'package:bookia/feature/home/data/models/books_model.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookItem extends StatelessWidget {
@@ -14,7 +15,7 @@ class BookItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-          context, 
+          context,
           AppRoutes.bookDetailsScreen,
           arguments: product?.id,
         );
@@ -33,30 +34,30 @@ class BookItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12.r),
               child: Image.network(
-                product?.image??"",
-                width: 140.w, 
+                product?.image ?? "",
+                width: 140.w,
                 height: 175.h,
                 fit: BoxFit.cover,
               ),
             ),
             16.verticalSpace,
             Text(
-              product?.name??"",
+              product?.name ?? "",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             8.verticalSpace,
             Row(
               children: [
-                Expanded(child: Text(product?.price??"")),
+                Expanded(child: Text(product?.price ?? "")),
                 IconButton(
                   onPressed: () {
-                    context.setLocale(const Locale('en'));
-                  }, 
-                  icon: Icon(Icons.shopping_cart)
-                )
+                    context.read<HomeCubit>().addToCart(product?.id ?? 0);
+                  },
+                  icon: Icon(Icons.shopping_cart),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

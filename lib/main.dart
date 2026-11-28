@@ -16,7 +16,6 @@ void main() async {
 
   await LocaleHelper.init();
   DoiFactory.init();
-  LocaleHelper.prefs?.clear();
   
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bookia/feature/home/data/models/books_model.dart';
 import 'package:bookia/feature/home/data/repo/home_repo.dart';
+import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 
 part 'home_state.dart';
@@ -18,6 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  // search
   search (String text) async {
     emit(SearchLoading());
     final data = await HomeRepo.search(text);
@@ -26,6 +28,18 @@ class HomeCubit extends Cubit<HomeState> {
     }
     else{
       emit(SearchError());
+    }
+  }
+
+  // add to cart
+  addToCart(int productId) async{
+    emit(AddToCartLoading());
+    final response = await HomeRepo.addToCart(productId);
+    if (response){
+      emit(AddToCartSuccess());
+    }
+    else {
+      emit(AddToCartError());
     }
   }
 }

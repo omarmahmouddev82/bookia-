@@ -1,4 +1,5 @@
 import 'package:bookia/core/theme/app_color.dart';
+import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/feature/cart/presentation/ui/cart_screen.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/ui/home_screen.dart';
@@ -39,18 +40,20 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
                     },
                   ),
                 ),
-    
+
                 const WishlistScreen(),
-    
-                const CartScreen(),
-    
+                BlocProvider(
+                  create: (context) => CartCubit()..getCartData(),
+                  child: CartScreen(),
+                ),
+
                 BlocProvider(
                   create: (_) => ProfileCubit()..getProfileData(),
                   child: const ProfileScreen(),
                 ),
               ],
             ),
-    
+
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: currentIndex,
               onTap: (index) {

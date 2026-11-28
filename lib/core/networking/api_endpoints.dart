@@ -6,4 +6,6 @@ class ApiEndpoints {
   static const String search = "products-search";
   static const String bookDetails = "products/";
   static const String profile = "profile";
+  static const String addToCart = "add-to-cart";
+  static const String cart = "cart";
 }

@@ -1,3 +1,4 @@
+import 'package:bookia/core/theme/app_text_style.dart';
 import 'package:bookia/feature/home/data/models/books_model.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/ui/widgets/book_item.dart';
@@ -25,6 +26,10 @@ class HomeScreen extends StatelessWidget {
                 HomeAppBar(),
                 24.verticalSpace,
                 BlocBuilder<HomeCubit, HomeState>(
+                  buildWhen: (previous, current) =>
+                      current is GetBestSellerError ||
+                      current is GetBestSellerLoading ||
+                      current is GetBestSellerSuccess,
                   builder: (context, state) {
                     if (state is GetBestSellerLoading) {
                       return Expanded(
@@ -38,19 +43,19 @@ class HomeScreen extends StatelessWidget {
                                   mainAxisSpacing: 14.w,
                                   crossAxisSpacing: 18.h,
                                 ),
-                            itemBuilder: (context, index) =>
-                                BookItem(
-                                  product: Products(
-                                    name: "name test",
-                                    price: "240",
-                                    image: "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg",
-                                  )
-                                ),
+                            itemBuilder: (context, index) => BookItem(
+                              product: Products(
+                                name: "name test",
+                                price: "240",
+                                image: "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg",
+                              ),
+                            ),
                             itemCount: 8,
                           ),
                         ),
                       );
-                    } else if (state is GetBestSellerSuccess) {
+                    } 
+                    else if (state is GetBestSellerSuccess) {
                       return Expanded(
                         child: GridView.builder(
                           gridDelegate:
@@ -65,12 +70,35 @@ class HomeScreen extends StatelessWidget {
                           itemCount: state.products?.length,
                         ),
                       );
-                    } else {
+                    } 
+                    else {
                       return Center(child: Text("Error"));
                     }
                   },
                 ),
-                24.verticalSpace
+                BlocListener<HomeCubit, HomeState>(
+                  listener: (context, state) {
+                    if (state is AddToCartLoading) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => Center(child: CircularProgressIndicator()),
+                      );
+                    } 
+                    else if (state is AddToCartSuccess) {
+                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(
+                            "Product Added Successfully",
+                            style: AppTextStyle.dmRegular18,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: SizedBox.shrink(),
+                ),
               ],
             ),
           ),

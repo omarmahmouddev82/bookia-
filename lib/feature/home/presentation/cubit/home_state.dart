@@ -18,3 +18,7 @@ final class SearchSuccess extends HomeState{
   final List<Products?>? products;
   SearchSuccess(this.products);
 }
+
+final class AddToCartLoading extends HomeState{}
+final class AddToCartSuccess extends HomeState{}
+final class AddToCartError extends HomeState{}
